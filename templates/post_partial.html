@@ -1,0 +1,25 @@
+<div class="post">
+    <div class="post-heading">
+        <div class="post-title">
+            <a href="/post/{{p.key().id()}}">
+                {{p.subject}} 
+            </a>
+        </div>
+
+    </div>
+
+    <div class="post-content">
+        {% if likes %}
+          <p>Likes: {{ likes }}</p>            
+        {% endif %}
+        <p>{{p.content | safe}}</p>
+
+    </div>
+      <br>
+      <form>
+          <button type="submit" formmethod="post" formaction="/post/{{p.key().id()}}/like">Like</button>
+          <button type="submit" formmethod="get" formaction="/post/{{p.key().id()}}/comment">Comment</button>
+            <button type="submit" formmethod="get" formaction="/post/{{p.key().id()}}/edit">Edit</button>
+      </form>
+      <br>
+    </div>

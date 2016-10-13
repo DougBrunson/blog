@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% include 'post_partial.html' with context %}
+
+      <form method="post">
+          <label>
+              <div>Comment</div>
+              <textarea  placeholder="Leave a comment..." cols='10' rows='2' name="content">{{content}}</textarea>
+          </label>
+
+          <input type="submit">
+      </form>
+{% endblock %}

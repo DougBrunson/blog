@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="post">
+    <div class="post-heading">
+        <div class="post-title">{{post.subject}} 
+        </div>
+
+    </div>
+
+    <div class="post-content">
+        <p>Likes: {{ likes }}</p>            
+        <p>{{post.content | safe}}</p>
+
+        {% if comments %}
+          {% for c in comments %}
+              {{ c.render() | safe }}
+          {% endfor %}
+        {% endif %}
+    </div>
+      <br>
+      <form>
+          <button type="submit" formmethod="post" formaction="/post/{{post.key().id()}}/like">Like</button>
+          <button type="submit" formmethod="get" formaction="/post/{{post.key().id()}}/comment">Comment</button>
+            <button type="submit" formmethod="get" formaction="/post/{{post.key().id()}}/edit">Edit</button>
+      </form>
+      <br>
+    </div>
+
+{% endblock %}
